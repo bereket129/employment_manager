@@ -10,7 +10,7 @@ pipeline {
   stages {
     stage("build"){
       steps{
-          echo "building the version ${branchName}"
+          echo "building the version ${params.branchName}"
       }
     }
     stage("test"){
