@@ -1,6 +1,7 @@
+def app
+
 pipeline {
     agent any
-    def app
     parameters {
         string(name: 'branchName', defaultValue: '',description: 'Version to deploy on prod')
         choice(name: 'pipeline', choices: ['main','master','dmc8384'], description: 'name of branch')
