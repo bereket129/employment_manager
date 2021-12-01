@@ -4,7 +4,7 @@ pipeline {
         string(name: 'branchName', defaultValue: '',description: 'Version to deploy on prod')
         choice(name: 'pipeline', choices: ['main','master','dmc8384'], description: 'name of branch')
         string(name: 'tag', defaultValue: 'latest', description: 'tag name for the image')
-        boolean(name: 'DeployToDev', defaultValue: true,  description: 'Do you want to deploy this to dev?')
+        booleanParam(name: 'DeployToDev', defaultValue: true,  description: 'Do you want to deploy this to dev?')
     }
   
   stages {
