@@ -19,6 +19,9 @@ pipeline {
       }
     }
       stage("deploy"){
+          when{
+              params.DeployToDev
+          }
       steps{
         sh "cat /var/jenkins_home/secrets/master.key"
       }
