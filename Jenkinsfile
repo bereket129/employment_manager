@@ -11,7 +11,10 @@ pipeline {
   
   stages {
     stage("build"){
+        steps{
+            
         script{ app = docker.build("abusha129/newapp")}
+        }
       
     }
     stage("test"){
@@ -21,11 +24,14 @@ pipeline {
     }
       
       stage("push image"){
+          steps{
+              
           script{docker.withRegistry('https://registry.hub.docker.com','docker'){
               app.push("employeeManager")
               app.push("latest")
           }
                 }
+          }
       }
       
       stage("deploy"){
