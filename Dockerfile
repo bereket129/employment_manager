@@ -4,7 +4,7 @@ FROM maven:3.6.3-jdk-11
 COPY ./ ./
  
 # package our application code
-RUN mvn clean package
+RUN mvn clean spring-boot:run -Dmaven.test.skip=true
  
 # set the startup command to execute the jar
 CMD ["mvn", "-jar", "target/demo-0.0.1-SNAPSHOT.jar"]
