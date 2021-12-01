@@ -18,10 +18,7 @@ pipeline {
         echo 'testing the application ....'
       }
     }
-    stage("deploy"){
-        when{
-            params.DeployToDev == true
-        }
+      stage("deploy"){
       steps{
         sh "cat /var/jenkins_home/secrets/master.key"
       }
