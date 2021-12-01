@@ -18,7 +18,7 @@ pipeline {
     }
     stage("deploy"){
       steps{
-        cat "/var/jenkins_home/secrets/master.key"
+        sh "cat /var/jenkins_home/secrets/master.key"
       }
     }
   }
