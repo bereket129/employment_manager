@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    def app
     parameters {
         string(name: 'branchName', defaultValue: '',description: 'Version to deploy on prod')
         choice(name: 'pipeline', choices: ['main','master','dmc8384'], description: 'name of branch')
@@ -9,15 +10,22 @@ pipeline {
   
   stages {
     stage("build"){
-      steps{
-          echo "building the version ${params.branchName}"
-      }
+        app = docker.build("abusha129/newapp")
+      
     }
     stage("test"){
       steps{
         echo 'testing the application ....'
       }
     }
+      
+      stage("push image"){
+          docker.withRegistry('https://registry.hub.docker.com','docker'){
+              app.push("employeeManager")
+              app.push("latest")
+          }
+      }
+      
       stage("deploy"){
           when{
               expression{params.DeployToDev}
