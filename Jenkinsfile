@@ -24,7 +24,7 @@ pipeline {
               
           }
       steps{
-        sh "cat /var/jenkins_home/secrets/master.key"
+        sh "ls -a"
       }
     }
   }
